@@ -30,22 +30,30 @@ public class Robot {
 		
 	}
 
+	public Integer convertToInteger(char coord) {
+		String coordString = "" + coord;
+		Integer coordInt = Integer.parseInt(coordString);
+		return coordInt;
+	}
+
 	public boolean moveUp() {
 		if (!objectDetectionSystem.blocked()) {
 
 			// Convert string coordinates to ints for accurate incrementing/decrementing
 			char xCoord = coordinates.charAt(0);
 			char yCoord = coordinates.charAt(2);
-			String xCoordString = "" + xCoord;
-			String yCoordString = "" + yCoord;
-			Integer xCoordInt = Integer.parseInt(xCoordString);
-			Integer yCoordInt = Integer.parseInt(yCoordString);
+			// String xCoordString = "" + xCoord;
+			// String yCoordString = "" + yCoord;
+			// Integer xCoordInt = Integer.parseInt(xCoordString);
+			// Integer yCoordInt = Integer.parseInt(yCoordString);
+
+			Integer yCoordInt = convertToInteger(yCoord);
 
 			// Update int based on directional movement
 			yCoordInt++;
 
 			// Convert back to string and update robot coordinates
-			String coords = xCoordInt.toString() + "," + yCoordInt.toString();
+			String coords = xCoord + "," + yCoordInt.toString();
 			this.coordinates = coords;
 
 			// Return true to indicate that we can and have moved in this direction
@@ -64,16 +72,18 @@ public class Robot {
 			// Convert string coordinates to ints for accurate incrementing/decrementing
 			char xCoord = coordinates.charAt(0);
 			char yCoord = coordinates.charAt(2);
-			String xCoordString = "" + xCoord;
-			String yCoordString = "" + yCoord;
-			Integer xCoordInt = Integer.parseInt(xCoordString);
-			Integer yCoordInt = Integer.parseInt(yCoordString);
+			// String xCoordString = "" + xCoord;
+			// String yCoordString = "" + yCoord;
+			// Integer xCoordInt = Integer.parseInt(xCoordString);
+			// Integer yCoordInt = Integer.parseInt(yCoordString);
+
+			Integer yCoordInt = convertToInteger(yCoord);
 
 			// Update int based on directional movement
 			yCoordInt--;
 
 			// Convert back to string and update robot coordinates
-			String coords = xCoordInt.toString() + "," + yCoordInt.toString();
+			String coords = xCoord + "," + yCoordInt.toString();
 			this.coordinates = coords;
 
 			// Return true to indicate that we can and have moved in this direction
@@ -93,16 +103,18 @@ public class Robot {
 			// Convert string coordinates to ints for accurate incrementing/decrementing
 			char xCoord = coordinates.charAt(0);
 			char yCoord = coordinates.charAt(2);
-			String xCoordString = "" + xCoord;
-			String yCoordString = "" + yCoord;
-			Integer xCoordInt = Integer.parseInt(xCoordString);
-			Integer yCoordInt = Integer.parseInt(yCoordString);
+			// String xCoordString = "" + xCoord;
+			// String yCoordString = "" + yCoord;
+			// Integer xCoordInt = Integer.parseInt(xCoordString);
+			// Integer yCoordInt = Integer.parseInt(yCoordString);
+
+			Integer xCoordInt = convertToInteger(xCoord);
 
 			// Update int based on directional movement
 			xCoordInt--;
 
 			// Convert back to string and update robot coordinates
-			String coords = xCoordInt.toString() + "," + yCoordInt.toString();
+			String coords = xCoordInt.toString() + "," + yCoord;
 			this.coordinates = coords;
 
 			// Return true to indicate that we can and have moved in this direction
@@ -122,16 +134,18 @@ public class Robot {
 			// Convert string coordinates to ints for accurate incrementing/decrementing
 			char xCoord = coordinates.charAt(0);
 			char yCoord = coordinates.charAt(2);
-			String xCoordString = "" + xCoord;
-			String yCoordString = "" + yCoord;
-			Integer xCoordInt = Integer.parseInt(xCoordString);
-			Integer yCoordInt = Integer.parseInt(yCoordString);
+			// String xCoordString = "" + xCoord;
+			// String yCoordString = "" + yCoord;
+			// Integer xCoordInt = Integer.parseInt(xCoordString);
+			// Integer yCoordInt = Integer.parseInt(yCoordString);
+
+			Integer xCoordInt = convertToInteger(xCoord);
 
 			// Update int based on directional movement
 			xCoordInt++;
 
 			// Convert back to string and update robot coordinates
-			String coords = xCoordInt.toString() + "," + yCoordInt.toString();
+			String coords = xCoordInt.toString() + "," + yCoord;
 			this.coordinates = coords;
 
 			// Return true to indicate that we can and have moved in this direction

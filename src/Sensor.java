@@ -8,7 +8,7 @@ public class Sensor {
 		this.robot = robot;
 	}
 	
-	public String sensorCooridinate() {
+	public String sensorCoordinate() {
 		String[] c = this.robot.coordinates.split(",");
 		// 1=straight, 2=right, 3=back, 4=left, 5=down
 		int x = Integer.parseInt(c[0]);

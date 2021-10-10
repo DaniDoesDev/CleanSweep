@@ -12,7 +12,7 @@ public class ObjectDetection {
 			String thing = i.readFlatSensor();
 			// Always write to floor plan
 			this.robot.floorPlanSystem.updateFloorPlan(
-				i.sensorCooridinate(), thing
+				i.sensorCoordinate(), thing
 			);
 			if (thing == "wall" || thing == "door-closed") {
 				obstacle=true;//
@@ -25,7 +25,7 @@ public class ObjectDetection {
 		for (Boolean i :this.robot.downSensor.readDownSensor()) {
 			if (i == true) {
 				this.robot.floorPlanSystem.updateFloorPlan(
-					sensorCooridinate(c), "down-stair/decline"
+					sensorCoordinate(c), "down-stair/decline"
 				);
 				obstacle=true;//
 				//objects.set(c-1, "down-stair/decline");
@@ -45,7 +45,7 @@ public class ObjectDetection {
 			robot.shutdown();
 		}
 	}
-	public String sensorCooridinate(int direction) {
+	public String sensorCoordinate(int direction) {
 		String[] c = this.robot.coordinates.split(",");
 		// 1=straight, 2=right, 3=back, 4=left
 		int x = Integer.parseInt(c[0]);
@@ -71,7 +71,7 @@ public class ObjectDetection {
 	public Boolean blocked() {
 		for (int c=1; c<5; c++) {
 			String thing = this.robot.floorPlanSystem.readFloorPlan(
-				sensorCooridinate(c)
+				sensorCoordinate(c)
 			);
 			if (thing == "clear" || thing == "charging-base" ||
 				thing == "door-open" 

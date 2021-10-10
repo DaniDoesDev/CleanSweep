@@ -42,11 +42,6 @@ public class Robot {
 			// Convert string coordinates to ints for accurate incrementing/decrementing
 			char xCoord = coordinates.charAt(0);
 			char yCoord = coordinates.charAt(2);
-			// String xCoordString = "" + xCoord;
-			// String yCoordString = "" + yCoord;
-			// Integer xCoordInt = Integer.parseInt(xCoordString);
-			// Integer yCoordInt = Integer.parseInt(yCoordString);
-
 			Integer yCoordInt = convertToInteger(yCoord);
 
 			// Update int based on directional movement
@@ -72,11 +67,6 @@ public class Robot {
 			// Convert string coordinates to ints for accurate incrementing/decrementing
 			char xCoord = coordinates.charAt(0);
 			char yCoord = coordinates.charAt(2);
-			// String xCoordString = "" + xCoord;
-			// String yCoordString = "" + yCoord;
-			// Integer xCoordInt = Integer.parseInt(xCoordString);
-			// Integer yCoordInt = Integer.parseInt(yCoordString);
-
 			Integer yCoordInt = convertToInteger(yCoord);
 
 			// Update int based on directional movement
@@ -103,11 +93,6 @@ public class Robot {
 			// Convert string coordinates to ints for accurate incrementing/decrementing
 			char xCoord = coordinates.charAt(0);
 			char yCoord = coordinates.charAt(2);
-			// String xCoordString = "" + xCoord;
-			// String yCoordString = "" + yCoord;
-			// Integer xCoordInt = Integer.parseInt(xCoordString);
-			// Integer yCoordInt = Integer.parseInt(yCoordString);
-
 			Integer xCoordInt = convertToInteger(xCoord);
 
 			// Update int based on directional movement
@@ -134,11 +119,6 @@ public class Robot {
 			// Convert string coordinates to ints for accurate incrementing/decrementing
 			char xCoord = coordinates.charAt(0);
 			char yCoord = coordinates.charAt(2);
-			// String xCoordString = "" + xCoord;
-			// String yCoordString = "" + yCoord;
-			// Integer xCoordInt = Integer.parseInt(xCoordString);
-			// Integer yCoordInt = Integer.parseInt(yCoordString);
-
 			Integer xCoordInt = convertToInteger(xCoord);
 
 			// Update int based on directional movement

@@ -27,5 +27,10 @@ public class Robot {
 		// check for obstacles 
 		this.objectDetectionSystem.read();
 		this.floorPlanSystem.print();
+		
+	}
+	
+	public void shutdown() {
+		System.out.println("Robot shutting down!");
 	}
 }

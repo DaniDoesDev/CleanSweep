@@ -7,8 +7,8 @@ public class SensorSimulator {
 	private Robot robot;
 	
 	public SensorSimulator(Robot robot) {
-		// clear, obstacle, wall, door-open, door-closed, stair,
-		// incline, decline, charging-base
+		// clear, obstacle, wall, door-closed, door-open, stair/incline,
+		// down-stair/decline, charging-base
 		// ex: k = "4,5" v = "wall"
 		this.robot = robot;
 		this.floorPlan = new HashMap<String, String>();

@@ -6,8 +6,8 @@ public class FloorPlan {
 	public FloorPlan() {
 		this.floorPlan = new HashMap<String, String>();
 	}
-	public void updateFloorPlan(String cooridinate, String thing) {
-		this.floorPlan.put(cooridinate, thing);
+	public void updateFloorPlan(String coordinate, String thing) {
+		this.floorPlan.put(coordinate, thing);
 	}
 	public void print() {
 		System.out.println(this.floorPlan);

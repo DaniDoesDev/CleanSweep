@@ -50,6 +50,7 @@ public class Robot {
 			// Convert back to string and update robot coordinates
 			String coords = xCoord + "," + yCoordInt.toString();
 			this.coordinates = coords;
+			System.out.println("I moved to coordinates " + coords);
 
 			// Return true to indicate that we can and have moved in this direction
 			return true;
@@ -75,6 +76,7 @@ public class Robot {
 			// Convert back to string and update robot coordinates
 			String coords = xCoord + "," + yCoordInt.toString();
 			this.coordinates = coords;
+			System.out.println("I moved to coordinates " + coords);
 
 			// Return true to indicate that we can and have moved in this direction
 			return true;
@@ -101,6 +103,7 @@ public class Robot {
 			// Convert back to string and update robot coordinates
 			String coords = xCoordInt.toString() + "," + yCoord;
 			this.coordinates = coords;
+			System.out.println("I moved to coordinates " + coords);
 
 			// Return true to indicate that we can and have moved in this direction
 			return true;
@@ -127,6 +130,7 @@ public class Robot {
 			// Convert back to string and update robot coordinates
 			String coords = xCoordInt.toString() + "," + yCoord;
 			this.coordinates = coords;
+			System.out.println("I moved to coordinates " + coords);
 
 			// Return true to indicate that we can and have moved in this direction
 			return true;

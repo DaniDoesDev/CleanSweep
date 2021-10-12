@@ -7,6 +7,7 @@ For Sprint 1 we wanted to concentrate on both getting local environments set up,
 
 * Navigation - Basic Movement
     * Acceptance criteria - Clean sweep is able to move horizontally and vertically one grid space at a time. If it is blocked, it will not move in the direction specified, print out a message indicating this, and return false. Otherwise, it will print out a message that it successfully navigated to the new grid space and return true. 
+    * Testing - JUnit tests have been implemented in order to test each directional movement method and assert that the return coordinates are as expected based on whether the Clean Sweep was blocked or not.
 * Navigation - Basic Obstacle Detection
 * Basic Dirt Detection
 * Basic Cleaning

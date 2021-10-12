@@ -12,8 +12,6 @@ For Sprint 1 we wanted to concentrate on both getting local environments set up,
 * Basic Cleaning
 * Basic Floor Type Detection
 
-# System Description
-
 * Main.java: This file creates a new robot by calling `new Robot();`.
 * Robot.java: Whenever the robot starts, it turns on its object detection system,
  its floor plan system, adds 5 sensors, turns on its sensor simulator system, and 

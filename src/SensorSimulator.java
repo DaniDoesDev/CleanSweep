@@ -3,7 +3,7 @@ import java.util.HashMap;
 
 public class SensorSimulator {
 	private HashMap<String, String> floorPlan;
-	private ArrayList<String> things = new ArrayList<String>(); 
+	private ArrayList<String> obstacles = new ArrayList<String>();
 	private Robot robot;
 	
 	public SensorSimulator(Robot robot) {
@@ -12,30 +12,39 @@ public class SensorSimulator {
 		// ex: k = "4,5" v = "wall"
 		this.robot = robot;
 		this.floorPlan = new HashMap<String, String>();
-		this.things.add("clear");
-		this.things.add("obstacle");
-		this.things.add("wall");
-		this.things.add("door-closed");
-		this.things.add("door-open");
-		this.things.add("stair/incline");
-		this.things.add("down-stair/decline"); // (clear for other sensors)
-		this.things.add("charging-base");
+		//this.obstacles.add("clear");
+		this.obstacles.add("obstacle");
+		this.obstacles.add("wall");
+		this.obstacles.add("door-closed");
+		this.obstacles.add("door-open");
+		this.obstacles.add("stair/incline");
+		this.obstacles.add("down-stair/decline"); // =(clear for other sensors)
+		//this.obstacles.add("charging-base");
 		
 		for (int i = 0; i<10; i++) {
 			for (int j = 0; j<10; j++) {
-				if (i == 0 || i == 9) { // Puts wall on the outside
+				if (i == 0 || i == 9) { // Puts wall on outside
 					this.floorPlan.put(i + "," + j, "wall");
-				} else if (j == 0 || j == 9) {
+				} else if (j == 0 || j == 9) { // Puts wall on outside
 					this.floorPlan.put(i + "," + j, "wall");
 				} else {
-					int index = (int)(Math.random() * this.things.size());  
-		            this.floorPlan.put(i + "," + j, things.get(index));
+					if (Math.random() > 0.2) { // =0-1
+						this.floorPlan.put(i + "," + j, "clear");
+					} else {
+						int index = (int)(Math.random() * this.obstacles.size());  
+			            this.floorPlan.put(i + "," + j, obstacles.get(index));
+					}
 				}
 			}
 		}
 		
-		// The robot's location is always clear.
+		// The robot's starting location is always clear.
 		this.floorPlan.put(this.robot.coordinates, "clear");
+		
+		// Add a randomly placed charging base
+		int x = (int)(Math.random() * 7) + 1;
+		int y = (int)(Math.random() * 7) + 1;
+		this.floorPlan.put(x + "," + y, "charging-base");
 	}
 	
 	public ArrayList<Boolean> readDownSensor() {

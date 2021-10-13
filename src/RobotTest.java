@@ -6,7 +6,7 @@ class RobotTest {
 	@Test
 	void testMoveUp() {
 		Robot cleanSweep = new Robot();
-		if (cleanSweep.moveUp() == false) {
+		if (cleanSweep.moveStraight() == false) {
 			assertEquals(cleanSweep.coordinates, "1,1" );
 		} else {
 			assertEquals(cleanSweep.coordinates, "1,2" );
@@ -16,7 +16,7 @@ class RobotTest {
 	@Test
 	void testMoveDown() {
 		Robot cleanSweep = new Robot();
-		if (cleanSweep.moveDown() == false) {
+		if (cleanSweep.moveBack() == false) {
 			assertEquals(cleanSweep.coordinates, "1,1" );
 		} else {
 			assertEquals(cleanSweep.coordinates, "1,0" );

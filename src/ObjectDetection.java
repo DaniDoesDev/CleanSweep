@@ -6,17 +6,13 @@ public class ObjectDetection {
 	public ObjectDetection(Robot robot) {
 		this.robot=robot;
 	}
-	public void read() {
-		Boolean obstacle = false; //for test
+	private void read() {
 		for (Sensor i : this.robot.flatSensors) { 
 			String thing = i.readFlatSensor();
 			// Always write to floor plan
 			this.robot.floorPlanSystem.updateFloorPlan(
 				i.sensorCoordinate(), thing
 			);
-			if (thing == "wall" || thing == "door-closed") {
-				obstacle=true;//
-			}		
 		}
 		
 		ArrayList<Boolean> x = this.robot.downSensor.readDownSensor();
@@ -27,21 +23,12 @@ public class ObjectDetection {
 				this.robot.floorPlanSystem.updateFloorPlan(
 					sensorCoordinate(c), "down-stair/decline"
 				);
-				obstacle=true;//
-				//objects.set(c-1, "down-stair/decline");
 			}
 			c+=1;
 		}
 		
-		// test
-		if (obstacle==true) {
-			System.out.println("obstacle detected");
-		} else {
-			System.out.println("no obstacle detected");
-		}
-		
 		// shutdown?
-		if (blocked()) {
+		if (checkShutdown()) {
 			robot.shutdown();
 		}
 	}
@@ -68,15 +55,26 @@ public class ObjectDetection {
 		return coord;
 	}
 
-	public Boolean blocked() {
+	public Boolean blocked(String direction) {
+		this.read(); // update sensor readings
+		// Read floorplan for straight coordinate
+		String object = robot.floorPlanSystem.readFloorPlan().get(direction);
+		if (object == "clear" || object == "charging-base" ||
+			object == "door-open" 
+		) {
+			return false;
+		}
+		return true;
+	}
+	
+	private Boolean checkShutdown() {
 		for (int c=1; c<5; c++) {
-			String thing = this.robot.floorPlanSystem.readFloorPlan(
+			String thing = this.robot.floorPlanSystem.readFloorPlanCoordinate(
 				sensorCoordinate(c)
 			);
 			if (thing == "clear" || thing == "charging-base" ||
 				thing == "door-open" 
-			)
-			{
+			) {
 				return false;
 			}
 		}

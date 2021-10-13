@@ -49,7 +49,6 @@ public class Robot {
 //	}
 	
 	public boolean moveStraight() {
-		// Read sensors
 		if (!objectDetectionSystem.blocked("straight")) {
 
 			// Convert string coordinates to ints for accurate incrementing/decrementing

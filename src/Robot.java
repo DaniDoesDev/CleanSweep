@@ -15,7 +15,7 @@ public class Robot {
 	
 	public void start() {
 		this.objectDetectionSystem = new ObjectDetection(this);
-		this.floorPlanSystem = new FloorPlan();
+		this.floorPlanSystem = new FloorPlan(this);
 		this.flatSensors = new ArrayList();
 		this.flatSensors.add(new Sensor(1, this)); // Straight 
 		this.flatSensors.add(new Sensor(2, this)); // Right
@@ -24,9 +24,10 @@ public class Robot {
 		this.downSensor = new Sensor(5, this); // Down
 		this.sensorSimulatorSystem = new SensorSimulator(this);
 		this.coordinates = "1,1"; // Machine start position
+		
 		// check for obstacles 
-		this.objectDetectionSystem.read();
-		this.floorPlanSystem.print();
+		//this.objectDetectionSystem.read();
+		//this.floorPlanSystem.print();
 		
 	}
 
@@ -36,8 +37,19 @@ public class Robot {
 		return coordInt;
 	}
 
-	public boolean moveUp() {
-		if (!objectDetectionSystem.blocked()) {
+//	public ArrayList<Integer> parseCoordinates() {
+//		String[] c = coordinates.split(",");
+//		// 1=straight, 2=right, 3=back, 4=left
+//		int x = Integer.parseInt(c[0]);
+//		int y = Integer.parseInt(c[1]);
+//		ArrayList<Integer> co = new ArrayList<Integer>();
+//		co.add(x);
+//		co.add(y);
+//		return co;
+//	}
+	
+	public boolean moveStraight() {
+		if (!objectDetectionSystem.blocked("straight")) {
 
 			// Convert string coordinates to ints for accurate incrementing/decrementing
 			char xCoord = coordinates.charAt(0);
@@ -62,8 +74,8 @@ public class Robot {
 		}
 	}
 
-	public boolean moveDown() {
-		if (!objectDetectionSystem.blocked()) {
+	public boolean moveBack() {
+		if (!objectDetectionSystem.blocked("back")) {
 
 			// Convert string coordinates to ints for accurate incrementing/decrementing
 			char xCoord = coordinates.charAt(0);
@@ -86,11 +98,10 @@ public class Robot {
 			// Return false to indicate that this way is currently blocked
 			return false;
 		}
-
 	}
 
 	public boolean moveLeft() {
-		if (!objectDetectionSystem.blocked()) {
+		if (!objectDetectionSystem.blocked("left")) {
 
 			// Convert string coordinates to ints for accurate incrementing/decrementing
 			char xCoord = coordinates.charAt(0);
@@ -113,11 +124,10 @@ public class Robot {
 			// Return false to indicate that this way is currently blocked
 			return false;
 		}
-
 	}
 
 	public boolean moveRight() {
-		if (!objectDetectionSystem.blocked()) {
+		if (!objectDetectionSystem.blocked("right")) {
 
 			// Convert string coordinates to ints for accurate incrementing/decrementing
 			char xCoord = coordinates.charAt(0);
@@ -140,7 +150,6 @@ public class Robot {
 			// Return false to indicate that this way is currently blocked
 			return false;
 		}
-
 	}
 
 	public void shutdown() {

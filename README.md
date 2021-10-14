@@ -19,9 +19,11 @@ For Sprint 1 we wanted to concentrate on both getting local environments set up,
 * Robot.java: Whenever the robot starts, it turns on its object detection system,
  its floor plan system, adds 5 sensors, turns on its sensor simulator system, and 
  sets its coordinates to (1,1).  
-* ObjectDetection.java: Reads the robot's sensors and updates the floor plan.
+* ObjectDetection.java:
+To run the system, call `blocked("<direction>")`. This will read all the sensors, update the floor plan,
+and return whether the direction is blocked.
 * FloorPlan.java: Starts with empty Hashmap and has two useful functions: `updateFloorPlan()`
-to write any object to floor plan coordinate; and `readFloorPlan()` to read a coordinate.
+to write any object to floor plan coordinate; and `readFloorPlanCoordinate()` to read a coordinate.
 * Sensor.java: Reads from the sensor simulator. Each sensor has a direction 1-5, 
 1-4 = directional and 5 = down. (Todo: add floor type sensor.)
 * SensorSimulator.java: Creates a 10 x 10 layout where the first and last

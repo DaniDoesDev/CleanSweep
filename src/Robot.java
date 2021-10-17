@@ -63,6 +63,7 @@ public class Robot {
 			String coords = xCoord + "," + yCoordInt.toString();
 			this.coordinates = coords;
 			System.out.println("I moved to coordinates " + coords);
+			System.out.println("CleanSweep cleaning initiated!");
 
 			// Return true to indicate that we can and have moved in this direction
 			return true;
@@ -70,6 +71,8 @@ public class Robot {
 		} else {
 			System.out.println("I can't move up a space, I'm blocked!");
 			// Return false to indicate that this way is currently blocked
+			System.out.println("CleanSweep moving to next space!");
+
 			return false;
 		}
 	}
@@ -89,6 +92,7 @@ public class Robot {
 			String coords = xCoord + "," + yCoordInt.toString();
 			this.coordinates = coords;
 			System.out.println("I moved to coordinates " + coords);
+			System.out.println("CleanSweep cleaning initiated!");
 
 			// Return true to indicate that we can and have moved in this direction
 			return true;
@@ -96,6 +100,8 @@ public class Robot {
 		} else {
 			System.out.println("I can't move down a space, I'm blocked!");
 			// Return false to indicate that this way is currently blocked
+			System.out.println("CleanSweep moving to next space!");
+
 			return false;
 		}
 	}
@@ -115,6 +121,7 @@ public class Robot {
 			String coords = xCoordInt.toString() + "," + yCoord;
 			this.coordinates = coords;
 			System.out.println("I moved to coordinates " + coords);
+			System.out.println("CleanSweep cleaning initiated!");
 
 			// Return true to indicate that we can and have moved in this direction
 			return true;
@@ -122,6 +129,8 @@ public class Robot {
 		} else {
 			System.out.println("I can't move one space left, I'm blocked!");
 			// Return false to indicate that this way is currently blocked
+			System.out.println("CleanSweep moving to next space!");
+
 			return false;
 		}
 	}
@@ -141,6 +150,7 @@ public class Robot {
 			String coords = xCoordInt.toString() + "," + yCoord;
 			this.coordinates = coords;
 			System.out.println("I moved to coordinates " + coords);
+			System.out.println("CleanSweep cleaning initiated!");
 
 			// Return true to indicate that we can and have moved in this direction
 			return true;
@@ -148,6 +158,8 @@ public class Robot {
 		} else {
 			System.out.println("I can't move one space right, I'm blocked!");
 			// Return false to indicate that this way is currently blocked
+			System.out.println("CleanSweep moving to next space!");
+
 			return false;
 		}
 	}

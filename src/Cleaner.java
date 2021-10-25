@@ -62,16 +62,30 @@ public class Cleaner {
             }
             // Otherwise floor types are different, get the average
         } else {
-            if ((curr == SurfaceLevel.FloorType.BARE || destination == SurfaceLevel.FloorType.BARE) 
-            && (curr == SurfaceLevel.FloorType.LOW || destination == SurfaceLevel.FloorType.LOW)) {
+            if ((curr == SurfaceLevel.FloorType.BARE || destination == SurfaceLevel.FloorType.BARE)
+                    && (curr == SurfaceLevel.FloorType.LOW || destination == SurfaceLevel.FloorType.LOW)) {
                 currBattery -= 1.5;
-            } else if ((curr == SurfaceLevel.FloorType.BARE || destination == SurfaceLevel.FloorType.BARE) 
-            && (curr == SurfaceLevel.FloorType.HIGH || destination == SurfaceLevel.FloorType.HIGH)) {
+            } else if ((curr == SurfaceLevel.FloorType.BARE || destination == SurfaceLevel.FloorType.BARE)
+                    && (curr == SurfaceLevel.FloorType.HIGH || destination == SurfaceLevel.FloorType.HIGH)) {
                 currBattery -= 2;
-            } else if ((curr == SurfaceLevel.FloorType.LOW || destination == SurfaceLevel.FloorType.LOW) 
-            && (curr == SurfaceLevel.FloorType.HIGH || destination == SurfaceLevel.FloorType.HIGH)) {
+            } else if ((curr == SurfaceLevel.FloorType.LOW || destination == SurfaceLevel.FloorType.LOW)
+                    && (curr == SurfaceLevel.FloorType.HIGH || destination == SurfaceLevel.FloorType.HIGH)) {
                 currBattery -= 2.5;
             }
+        }
+        System.out.println("The battery level is currently at " + getCurrBattery() + " units of charge");
+        if (getCurrBattery() == 0) {
+            System.out.println("I have run out of power, not good!");
+        }
+    }
+
+    public void drainBatteryCleaning(SurfaceLevel.FloorType curr) {
+        if (curr == SurfaceLevel.FloorType.BARE) {
+            currBattery -= 1;
+        } else if (curr == SurfaceLevel.FloorType.LOW) {
+            currBattery -= 2;
+        } else if (curr == SurfaceLevel.FloorType.HIGH) {
+            currBattery -= 3;
         }
         System.out.println("The battery level is currently at " + getCurrBattery() + " units of charge");
         if (getCurrBattery() == 0) {

@@ -1,6 +1,29 @@
 # CleanSweep
 Agile Group Project - Team Dirt Destroyers!
 
+# Sprint 2
+
+For Sprint 2 we wanted to start adding onto the base functionality completed in Sprint 1. Our priorities included power management, and the user portal component. Our stories include:
+
+* Cleaning - Refactor
+    * Increase the modularity and encapsulation of the previous cleaning story by moving cleaning to its own method and adding dirt decrementing capabilities for the Robot to use as required.
+    * Acceptance criteria - Cleaning has same base functionality but can now be used by calling encapsulated method.
+* Power Management - Battery Percentage
+    * Create methods that will drain the Robot battery appropriately when moving or cleaning based on floor type.
+    * Ensure that Robot moves back to a charging station before dying.
+* Floor Plan - Surfaces
+    * Related to above, ensures that the sensor can detect the type of floor the Robot is on and can detect if the surface must be cleaned.
+* Dirt Detection - Full Implementation
+    * Add varying amounts of dirt to the layout and include a method that allows the sensor to detect if an area is dirty.
+* Activity Log
+    * Allow the Clean Sweep to log its history for future use.
+* Registration
+    * Allow users to register their Clean Sweep on a portal.
+* Repeated Cleaning
+    * Allow users to schedule cleanings.
+* Floor plan visual - basic
+    * Create a method that will print a visual grid representation of the floor plan, obstacles, and where the clean sweep is currently
+
 # Sprint 1
 
 For Sprint 1 we wanted to concentrate on both getting local environments set up, getting everyone successfully connected to the shared GitHub repo, and getting basic Clean Sweep functionality in place. This functionality includes:

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class Robot {
 	
@@ -8,7 +9,8 @@ public class Robot {
 	public Sensor downSensor;
 	public SensorSimulator sensorSimulatorSystem;
 	public Cleaner cleaner;
-	public String coordinates; 
+	public String coordinates;
+	public Stack<String> pathToInitialCharger; 
 	
 	public Robot() {
 		start();
@@ -26,6 +28,7 @@ public class Robot {
 		this.sensorSimulatorSystem = new SensorSimulator(this);
 		this.cleaner = new Cleaner(this);
 		this.coordinates = "1,1"; // Machine start position
+		this.pathToInitialCharger = new Stack<>();
 		
 		// check for obstacles 
 		//this.objectDetectionSystem.read();
@@ -66,6 +69,9 @@ public class Robot {
 			this.coordinates = coords;
 			System.out.println("I moved to coordinates " + coords);
 
+			// Push the opposite of this successful movement to path history so we can retrace steps
+			pathToInitialCharger.push("back");
+
 			// Return true to indicate that we can and have moved in this direction
 			return true;
 
@@ -91,6 +97,9 @@ public class Robot {
 			String coords = xCoord + "," + yCoordInt.toString();
 			this.coordinates = coords;
 			System.out.println("I moved to coordinates " + coords);
+
+			// Push the opposite of this successful movement to path history so we can retrace steps
+			pathToInitialCharger.push("straight");
 
 			// Return true to indicate that we can and have moved in this direction
 			return true;
@@ -118,6 +127,9 @@ public class Robot {
 			this.coordinates = coords;
 			System.out.println("I moved to coordinates " + coords);
 
+			// Push the opposite of this successful movement to path history so we can retrace steps
+			pathToInitialCharger.push("right");
+
 			// Return true to indicate that we can and have moved in this direction
 			return true;
 
@@ -143,6 +155,9 @@ public class Robot {
 			String coords = xCoordInt.toString() + "," + yCoord;
 			this.coordinates = coords;
 			System.out.println("I moved to coordinates " + coords);
+
+			// Push the opposite of this successful movement to path history so we can retrace steps
+			pathToInitialCharger.push("left");
 
 			// Return true to indicate that we can and have moved in this direction
 			return true;

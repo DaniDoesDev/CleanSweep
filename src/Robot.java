@@ -169,6 +169,39 @@ public class Robot {
 		}
 	}
 
+	public void moveToCharger() {
+		while (!pathToInitialCharger.isEmpty()) {
+			String direction = pathToInitialCharger.pop();
+			if (direction.equals("straight")) {
+				moveStraight();
+			} else if (direction.equals("back")) {
+				moveBack();
+			} else if (direction.equals("left")) {
+				moveLeft();
+			} else if (direction.equals("right")) {
+				moveRight();
+			}
+		}
+		System.out.println("Back at my charging station");
+	}
+
+	public boolean isInNeedOfCharge() {
+		// At worst, we can lose 3 units of battery per movement
+		// We know how much battery required to take our initial path back to our charger, 
+		// so check if we pass the threshold (with a buffer of 3) where we need to turn back
+		if (this.cleaner.getCurrBatteryToCharger() > (this.cleaner.getCurrBattery() - 3)) {
+			System.out.println("I need to turn around and move back to my charger now!");
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void charge() {
+		this.cleaner.setCurrBattery(250);
+		System.out.println("I'm all charged up and ready to go!");
+	}
+
 	public void shutdown() {
 		System.out.println("Robot shutting down!");
 	}

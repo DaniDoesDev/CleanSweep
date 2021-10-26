@@ -170,29 +170,35 @@ public class Robot {
 	}
 
 	public void moveToCharger() {
-		while (!pathToInitialCharger.isEmpty()) {
-			String direction = pathToInitialCharger.pop();
-			if (direction.equals("straight")) {
-				moveStraight();
-			} else if (direction.equals("back")) {
-				moveBack();
-			} else if (direction.equals("left")) {
-				moveLeft();
-			} else if (direction.equals("right")) {
-				moveRight();
-			}
-		}
+		// while (!pathToInitialCharger.isEmpty()) {
+		// 	String direction = pathToInitialCharger.pop();
+		// 	if (direction.equals("straight")) {
+		// 		moveStraight();
+		// 	} else if (direction.equals("back")) {
+		// 		moveBack();
+		// 	} else if (direction.equals("left")) {
+		// 		moveLeft();
+		// 	} else if (direction.equals("right")) {
+		// 		moveRight();
+		// 	}
+		// }
 		System.out.println("Back at my charging station");
+		// Decrement amount of charge we know it will take to get back based on our curr battery to charger value
+		this.cleaner.setCurrBattery(this.cleaner.getCurrBattery() - this.cleaner.getCurrBatteryToCharger());
+		System.out.println("My battery is currently at " + this.cleaner.getCurrBattery());
 	}
 
 	public boolean isInNeedOfCharge() {
 		// At worst, we can lose 3 units of battery per movement
 		// We know how much battery required to take our initial path back to our charger, 
-		// so check if we pass the threshold (with a buffer of 3) where we need to turn back
-		if (this.cleaner.getCurrBatteryToCharger() > (this.cleaner.getCurrBattery() - 3)) {
+		// so check if we pass the threshold (with a buffer of 6 round trip + 3 for potential worst cleaning cycle) where we need to turn back
+		if (this.cleaner.getCurrBatteryToCharger() > (this.cleaner.getCurrBattery() - 9)) {
 			System.out.println("I need to turn around and move back to my charger now!");
+			System.out.println("My curr battery is " + this.cleaner.getCurrBattery());
+			System.out.println("My curr battery to charger is " + this.cleaner.getCurrBatteryToCharger());
 			return true;
 		} else {
+			System.out.println("I still have the energy to keep going!");
 			return false;
 		}
 	}

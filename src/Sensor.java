@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Sensor {
 	private int direction;
@@ -35,5 +36,11 @@ public class Sensor {
 	}
 	public String readFlatSensor() {
 	    return this.robot.sensorSimulatorSystem.readFlatSensor(this.direction);
+	}
+
+	public SurfaceLevel.FloorType returnRandomFloorType() {
+		Random rn = new Random();
+		int randNum = rn.nextInt(3) + 1;
+		return SurfaceLevel.getSurfaceLevel(randNum);
 	}
 }

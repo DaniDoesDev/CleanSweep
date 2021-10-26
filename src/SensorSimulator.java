@@ -40,8 +40,11 @@ public class SensorSimulator {
 		
 		// The robot's starting location is always clear.
 		this.floorPlan.put(this.robot.coordinates, "clear");
+
+		// Add the initial charging base at Robot's starting coordinates of 1,1
+		this.floorPlan.put("1,1", "charging-base");
 		
-		// Add a randomly placed charging base
+		// Add a randomly placed charging base (this will be a second charging base)
 		int x = (int)(Math.random() * 7) + 1;
 		int y = (int)(Math.random() * 7) + 1;
 		this.floorPlan.put(x + "," + y, "charging-base");

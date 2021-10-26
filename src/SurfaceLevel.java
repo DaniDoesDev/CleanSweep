@@ -11,7 +11,7 @@ public class SurfaceLevel {
 
     }
 
-    public FloorType getSurfaceLevel(int SurfaceLevel) {
+    public static FloorType getSurfaceLevel(int SurfaceLevel) {
         if (SurfaceLevel == 1)
             return FloorType.BARE;
         if (SurfaceLevel == 2)

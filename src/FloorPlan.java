@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class FloorPlan {
@@ -20,7 +19,7 @@ public class FloorPlan {
 	public HashMap<String,String> readFloorPlan(){
 		// Return hashmap of the objects in four directions
 		// {"straight": "wall", "right":..., "back":..., "left:...}
-		HashMap h = new HashMap<String, String>();
+		HashMap<String, String> h = new HashMap<>();
 		h.put("straight", readFloorPlanCoordinate(sensorCoordinate("straight")));
 		h.put("right", readFloorPlanCoordinate(sensorCoordinate("right")));
 		h.put("back", readFloorPlanCoordinate(sensorCoordinate("back")));

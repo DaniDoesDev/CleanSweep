@@ -1,4 +1,4 @@
-import java.util.*;
+//import java.util.*;
 
 public class Cleaner {
 
@@ -6,13 +6,14 @@ public class Cleaner {
     private static final double MAX_DIRT_CAPACITY = 50;
     private double currBattery;
     private double currDirt;
-    private HashMap<String, String> DirtMap;
-    private Robot robot;
+    // private HashMap<String, String> DirtMap;
+    // private Robot robot;
+    private double currBatteryToCharger = 0;
 
     public Cleaner(Robot robot) {
         currBattery = MAX_BATTERY_CAPACITY;
         currDirt = MAX_DIRT_CAPACITY;
-        this.robot = robot;
+        // this.robot = robot;
     }
 
     public double getCurrBattery() {
@@ -21,6 +22,10 @@ public class Cleaner {
 
     public double getCurrDirt() {
         return currDirt;
+    }
+
+    public double getCurrBatteryToCharger() {
+        return currBatteryToCharger;
     }
 
     public void setCurrBattery(double currBattery) {
@@ -52,28 +57,37 @@ public class Cleaner {
     }
 
     public void drainBatteryMovement(SurfaceLevel.FloorType curr, SurfaceLevel.FloorType destination) {
+        double batteryLost = 0;
         if (curr == destination) {
             if (curr == SurfaceLevel.FloorType.BARE) {
                 currBattery -= 1;
+                batteryLost = 1;
             } else if (curr == SurfaceLevel.FloorType.LOW) {
                 currBattery -= 2;
+                batteryLost = 2;
             } else if (curr == SurfaceLevel.FloorType.HIGH) {
                 currBattery -= 3;
+                batteryLost = 3;
             }
             // Otherwise floor types are different, get the average
         } else {
             if ((curr == SurfaceLevel.FloorType.BARE || destination == SurfaceLevel.FloorType.BARE)
                     && (curr == SurfaceLevel.FloorType.LOW || destination == SurfaceLevel.FloorType.LOW)) {
                 currBattery -= 1.5;
+                batteryLost = 1.5;
             } else if ((curr == SurfaceLevel.FloorType.BARE || destination == SurfaceLevel.FloorType.BARE)
                     && (curr == SurfaceLevel.FloorType.HIGH || destination == SurfaceLevel.FloorType.HIGH)) {
                 currBattery -= 2;
+                batteryLost = 2;
             } else if ((curr == SurfaceLevel.FloorType.LOW || destination == SurfaceLevel.FloorType.LOW)
                     && (curr == SurfaceLevel.FloorType.HIGH || destination == SurfaceLevel.FloorType.HIGH)) {
                 currBattery -= 2.5;
+                batteryLost = 2.5;
             }
         }
         System.out.println("The battery level is currently at " + getCurrBattery() + " units of charge");
+        // Increment the amount of charge necessary to get to the initial charger using the same path
+        currBatteryToCharger += batteryLost;
         if (getCurrBattery() == 0) {
             System.out.println("I have run out of power, not good!");
         }
@@ -92,8 +106,6 @@ public class Cleaner {
             System.out.println("I have run out of power, not good!");
         }
     }
-
-
 
 }
 

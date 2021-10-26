@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+// import java.util.ArrayList;
+//import java.util.HashMap;
 
 public class ObjectDetection {
 	private Robot robot;
@@ -15,7 +15,7 @@ public class ObjectDetection {
 			);
 		}
 		
-		ArrayList<Boolean> x = this.robot.downSensor.readDownSensor();
+		// ArrayList<Boolean> x = this.robot.downSensor.readDownSensor();
 		
 		int c=1;
 		for (Boolean i :this.robot.downSensor.readDownSensor()) {

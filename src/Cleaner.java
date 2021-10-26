@@ -1,4 +1,4 @@
-import java.util.*;
+//import java.util.*;
 
 public class Cleaner {
 
@@ -6,14 +6,14 @@ public class Cleaner {
     private static final double MAX_DIRT_CAPACITY = 50;
     private double currBattery;
     private double currDirt;
-    private HashMap<String, String> DirtMap;
-    private Robot robot;
+    // private HashMap<String, String> DirtMap;
+    // private Robot robot;
     private double currBatteryToCharger = 0;
 
     public Cleaner(Robot robot) {
         currBattery = MAX_BATTERY_CAPACITY;
         currDirt = MAX_DIRT_CAPACITY;
-        this.robot = robot;
+        // this.robot = robot;
     }
 
     public double getCurrBattery() {

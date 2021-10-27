@@ -203,9 +203,23 @@ public class Robot {
 		}
 	}
 
+	// Check if we need to return to charger and trigger "empty me" notification
+	public boolean needsEmptying() {
+		if (this.cleaner.getCurrDirt() > 0) {
+			return false;
+		}
+		System.out.println("My dirt capacity is full, I need to return to the charger and be emptied!");
+		return true;
+	}
+
 	public void charge() {
 		this.cleaner.setCurrBattery(250);
 		System.out.println("I'm all charged up and ready to go!");
+	}
+
+	public void empty() {
+		this.cleaner.setCurrDirt(50);
+		System.out.println("My cleaning capacity has been restored!");
 	}
 
 	public void shutdown() {

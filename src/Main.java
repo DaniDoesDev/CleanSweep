@@ -13,10 +13,10 @@ public class Main {
 			SurfaceLevel.FloorType curr = cleanSweep.downSensor.returnRandomFloorType();
 			SurfaceLevel.FloorType destination = cleanSweep.downSensor.returnRandomFloorType();
 
-			if (cleanSweep.moveStraight()) {
-			} else if (cleanSweep.moveLeft()) {
-			} else if (cleanSweep.moveRight()) {
-			} else if (cleanSweep.moveBack()) {
+			if (cleanSweep.moveStraight(false)) {
+			} else if (cleanSweep.moveLeft(false)) {
+			} else if (cleanSweep.moveRight(false)) {
+			} else if (cleanSweep.moveBack(false)) {
 			} else {
 				System.out.println("Help, I'm surrounded!");
 				break;
@@ -27,6 +27,7 @@ public class Main {
 				System.out.println("got interrupted!");
 			}
 			cleanSweep.cleaner.drainBatteryMovement(curr, destination);
+
 			if (cleanSweep.downSensor.isDirty()) {
 				cleanSweep.cleaner.cleanSpot();
 				cleanSweep.cleaner.drainBatteryCleaning(destination);

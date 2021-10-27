@@ -48,7 +48,7 @@ public class Sensor {
 	// This currently returns a random dirt amount, once dirt detection is implemented it will return the amount of dirt located at this grid spot
 	public boolean isDirty() {
 		Random rn = new Random();
-		int randNum = rn.nextInt(1) + 1;
+		int randNum = rn.nextInt(2) + 1;
 		if (randNum == 1) {
 			System.out.println("This spot needs cleaning");
 			return true;

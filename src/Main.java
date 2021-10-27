@@ -1,8 +1,12 @@
+import portal.*; // Portal can run from the Robot if required
 
 public class Main {
 
 	public static void main(String[] args) {
 		Robot cleanSweep = new Robot();
+		// Todo: Read from schedules.csv and use 
+		//       ScheduledExecutorService to add tell the robot
+		//       to start running on these dates
 		System.out.println("Clean Sweep initialized - commence one-time cleaning cycle");
 		// Just try moving to any available space, pivoting as obstacles are detected
 		// Currently this is representative of one "cleaning cycle"

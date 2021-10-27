@@ -9,54 +9,35 @@ public class Main {
 		// When you move to a spot, clean it!
 		//int i = 0;
 
-		while ((!cleanSweep.isInNeedOfCharge())) {
+		while (!cleanSweep.isInNeedOfCharge() && !cleanSweep.needsEmptying()) {
 			SurfaceLevel.FloorType curr = cleanSweep.downSensor.returnRandomFloorType();
 			SurfaceLevel.FloorType destination = cleanSweep.downSensor.returnRandomFloorType();
 
-			if (cleanSweep.moveStraight()) {
-				// try {
-				// 	Thread.sleep(2500);
-				// } catch(InterruptedException e) {
-				// 	System.out.println("got interrupted!");
-				// }
-				cleanSweep.cleaner.drainBatteryMovement(curr, destination);
-				cleanSweep.cleaner.cleanSpot();
-				cleanSweep.cleaner.drainBatteryCleaning(destination);
-			} else if (cleanSweep.moveLeft()) {
-				// try {
-				// 	Thread.sleep(2500);
-				// } catch(InterruptedException e) {
-				// 	System.out.println("got interrupted!");
-				// }
-				cleanSweep.cleaner.drainBatteryMovement(curr, destination);
-				cleanSweep.cleaner.cleanSpot();
-				cleanSweep.cleaner.drainBatteryCleaning(destination);
-			} else if (cleanSweep.moveRight()) {
-				// try {
-				// 	Thread.sleep(2500);
-				// } catch(InterruptedException e) {
-				// 	System.out.println("got interrupted!");
-				// }
-				cleanSweep.cleaner.drainBatteryMovement(curr, destination);
-				cleanSweep.cleaner.cleanSpot();
-				cleanSweep.cleaner.drainBatteryCleaning(destination);
-			} else if (cleanSweep.moveBack()) {
-				// try {
-				// 	Thread.sleep(2500);
-				// } catch(InterruptedException e) {
-				// 	System.out.println("got interrupted!");
-				// }
-				cleanSweep.cleaner.drainBatteryMovement(curr, destination);
-				cleanSweep.cleaner.cleanSpot();
-				cleanSweep.cleaner.drainBatteryCleaning(destination);
+			if (cleanSweep.moveStraight(false)) {
+			} else if (cleanSweep.moveLeft(false)) {
+			} else if (cleanSweep.moveRight(false)) {
+			} else if (cleanSweep.moveBack(false)) {
 			} else {
 				System.out.println("Help, I'm surrounded!");
 				break;
 			}
+			try {
+				Thread.sleep(1000);
+			} catch(InterruptedException e) {
+				System.out.println("got interrupted!");
+			}
+			cleanSweep.cleaner.drainBatteryMovement(curr, destination);
 
+			if (cleanSweep.downSensor.isDirty()) {
+				cleanSweep.cleaner.cleanSpot();
+				cleanSweep.cleaner.drainBatteryCleaning(destination);
+			}
 		}
+
+		// Clean Sweep now needs to charge or be emptied
 		cleanSweep.moveToCharger();
 		cleanSweep.charge();
+		cleanSweep.empty();
 		cleanSweep.shutdown();
 	}
 

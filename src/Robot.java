@@ -53,7 +53,7 @@ public class Robot {
 //		return co;
 //	}
 	
-	public boolean moveStraight() {
+	public boolean moveStraight(boolean returningToCharger) {
 		if (!objectDetectionSystem.blocked("straight")) {
 
 			// Convert string coordinates to ints for accurate incrementing/decrementing
@@ -69,8 +69,15 @@ public class Robot {
 			this.coordinates = coords;
 			System.out.println("I moved to coordinates " + coords);
 
-			// Push the opposite of this successful movement to path history so we can retrace steps
-			pathToInitialCharger.push("back");
+			// Push the opposite of this successful movement to path history so we can retrace steps, but only if this moves us further in a direction
+			if (!returningToCharger) {
+				if (!pathToInitialCharger.isEmpty() && pathToInitialCharger.peek() == "straight") {
+					System.out.println("Test pop from stack");
+					pathToInitialCharger.pop();
+				} else {
+					pathToInitialCharger.push("back");
+				}
+			}
 
 			// Return true to indicate that we can and have moved in this direction
 			return true;
@@ -82,7 +89,7 @@ public class Robot {
 		}
 	}
 
-	public boolean moveBack() {
+	public boolean moveBack(boolean returningToCharger) {
 		if (!objectDetectionSystem.blocked("back")) {
 
 			// Convert string coordinates to ints for accurate incrementing/decrementing
@@ -99,7 +106,13 @@ public class Robot {
 			System.out.println("I moved to coordinates " + coords);
 
 			// Push the opposite of this successful movement to path history so we can retrace steps
-			pathToInitialCharger.push("straight");
+			if (!returningToCharger) {
+				if (!pathToInitialCharger.isEmpty() && pathToInitialCharger.peek() == "back") {
+					pathToInitialCharger.pop();
+				} else {
+					pathToInitialCharger.push("straight");
+				}
+			}
 
 			// Return true to indicate that we can and have moved in this direction
 			return true;
@@ -111,7 +124,7 @@ public class Robot {
 		}
 	}
 
-	public boolean moveLeft() {
+	public boolean moveLeft(boolean returningToCharger) {
 		if (!objectDetectionSystem.blocked("left")) {
 
 			// Convert string coordinates to ints for accurate incrementing/decrementing
@@ -128,8 +141,13 @@ public class Robot {
 			System.out.println("I moved to coordinates " + coords);
 
 			// Push the opposite of this successful movement to path history so we can retrace steps
-			pathToInitialCharger.push("right");
-
+			if (!returningToCharger) {
+				if (!pathToInitialCharger.isEmpty() && pathToInitialCharger.peek() == "left") {
+					pathToInitialCharger.pop();
+				} else {
+					pathToInitialCharger.push("right");
+				}
+			}
 			// Return true to indicate that we can and have moved in this direction
 			return true;
 
@@ -140,7 +158,7 @@ public class Robot {
 		}
 	}
 
-	public boolean moveRight() {
+	public boolean moveRight(boolean returningToCharger) {
 		if (!objectDetectionSystem.blocked("right")) {
 
 			// Convert string coordinates to ints for accurate incrementing/decrementing
@@ -157,7 +175,13 @@ public class Robot {
 			System.out.println("I moved to coordinates " + coords);
 
 			// Push the opposite of this successful movement to path history so we can retrace steps
-			pathToInitialCharger.push("left");
+			if (!returningToCharger) {
+				if (!pathToInitialCharger.isEmpty() && pathToInitialCharger.peek() == "right") {
+					pathToInitialCharger.pop();
+				} else {
+					pathToInitialCharger.push("left");
+				}
+			}
 
 			// Return true to indicate that we can and have moved in this direction
 			return true;
@@ -170,20 +194,21 @@ public class Robot {
 	}
 
 	public void moveToCharger() {
-		// while (!pathToInitialCharger.isEmpty()) {
-		// 	String direction = pathToInitialCharger.pop();
-		// 	if (direction.equals("straight")) {
-		// 		moveStraight();
-		// 	} else if (direction.equals("back")) {
-		// 		moveBack();
-		// 	} else if (direction.equals("left")) {
-		// 		moveLeft();
-		// 	} else if (direction.equals("right")) {
-		// 		moveRight();
-		// 	}
-		// }
+		while (!pathToInitialCharger.isEmpty()) {
+			// System.out.println(pathToInitialCharger.pop());
+		 	String direction = pathToInitialCharger.pop();
+		 	if (direction.equals("straight")) {
+		 		moveStraight(true);
+		 	} else if (direction.equals("back")) {
+		 		moveBack(true);
+		 	} else if (direction.equals("left")) {
+		 		moveLeft(true);
+		 	} else if (direction.equals("right")) {
+		 		moveRight(true);
+		 	}
+		}
 		System.out.println("Back at my charging station");
-		// Decrement amount of charge we know it will take to get back based on our curr battery to charger value
+		// Decrement amount of charge we know it will take to get back based on our curr battery to charger value, ***need to update***
 		this.cleaner.setCurrBattery(this.cleaner.getCurrBattery() - this.cleaner.getCurrBatteryToCharger());
 		System.out.println("My battery is currently at " + this.cleaner.getCurrBattery());
 	}
@@ -203,9 +228,23 @@ public class Robot {
 		}
 	}
 
+	// Check if we need to return to charger and trigger "empty me" notification
+	public boolean needsEmptying() {
+		if (this.cleaner.getCurrDirt() > 0) {
+			return false;
+		}
+		System.out.println("My dirt capacity is full, I need to return to the charger and be emptied!");
+		return true;
+	}
+
 	public void charge() {
 		this.cleaner.setCurrBattery(250);
 		System.out.println("I'm all charged up and ready to go!");
+	}
+
+	public void empty() {
+		this.cleaner.setCurrDirt(50);
+		System.out.println("My cleaning capacity has been restored!");
 	}
 
 	public void shutdown() {

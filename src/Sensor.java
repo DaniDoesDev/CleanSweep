@@ -38,9 +38,24 @@ public class Sensor {
 	    return this.robot.sensorSimulatorSystem.readFlatSensor(this.direction);
 	}
 
+	// This currently returns a random floor type, once floor types are added to the layout itself it will be updated to return floor type at curr spot
 	public SurfaceLevel.FloorType returnRandomFloorType() {
 		Random rn = new Random();
 		int randNum = rn.nextInt(3) + 1;
 		return SurfaceLevel.getSurfaceLevel(randNum);
 	}
+
+	// This currently returns a random dirt amount, once dirt detection is implemented it will return the amount of dirt located at this grid spot
+	public boolean isDirty() {
+		Random rn = new Random();
+		int randNum = rn.nextInt(2) + 1;
+		if (randNum == 1) {
+			System.out.println("This spot needs cleaning");
+			return true;
+		}
+		System.out.println("This spot is clean");
+		return false;
+	}
+
+
 }

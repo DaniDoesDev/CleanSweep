@@ -12,6 +12,7 @@ public class Main {
 		// Currently this is representative of one "cleaning cycle"
 		// When you move to a spot, clean it!
 		//int i = 0;
+		//Testing git commit/push
 
 		while (!cleanSweep.isInNeedOfCharge() && !cleanSweep.needsEmptying()) {
 			SurfaceLevel.FloorType curr = cleanSweep.downSensor.returnRandomFloorType();

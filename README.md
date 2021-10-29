@@ -1,3 +1,5 @@
+[![DaniDoesDev](https://circleci.com/gh/DaniDoesDev/CleanSweep.svg?style=shield)](https://app.circleci.com/pipelines/github/DaniDoesDev/CleanSweep)
+
 # CleanSweep
 Agile Group Project - Team Dirt Destroyers!
 

@@ -1,5 +1,5 @@
 <project>
-  <modelVersion>1.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
   <groupId>com.se456.app</groupId>
   <artifactId>CleanSweep</artifactId>
   <version>1.0-SNAPSHOT</version>

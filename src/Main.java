@@ -10,9 +10,8 @@ public class Main {
 		System.out.println("Clean Sweep initialized - commence one-time cleaning cycle");
 		// Just try moving to any available space, pivoting as obstacles are detected
 		// Currently this is representative of one "cleaning cycle"
-		// When you move to a spot, clean it!
-		//int i = 0;
-		//Testing git commit/push
+		// When you move to a spot, clean it if it's dirty!
+
 
 		while (!cleanSweep.isInNeedOfCharge() && !cleanSweep.needsEmptying()) {
 			SurfaceLevel.FloorType curr = cleanSweep.downSensor.returnRandomFloorType();
@@ -37,6 +36,8 @@ public class Main {
 				cleanSweep.cleaner.cleanSpot();
 				cleanSweep.cleaner.drainBatteryCleaning(destination);
 			}
+
+			System.out.println("--------------------------------------");
 		}
 
 		// Clean Sweep now needs to charge or be emptied

@@ -23,8 +23,6 @@ For Sprint 2 we wanted to start adding onto the base functionality completed in 
     * Allow users to register their Clean Sweep on a portal.
 * Repeated Cleaning
     * Allow users to schedule cleanings.
-* Floor plan visual - basic
-    * Create a method that will print a visual grid representation of the floor plan, obstacles, and where the clean sweep is currently
 
 # Sprint 1
 

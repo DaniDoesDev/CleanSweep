@@ -12,6 +12,7 @@ public class Main {
 		// Currently this is representative of one "cleaning cycle"
 		// When you move to a spot, clean it if it's dirty!
 
+
 		while (!cleanSweep.isInNeedOfCharge() && !cleanSweep.needsEmptying()) {
 			SurfaceLevel.FloorType curr = cleanSweep.downSensor.returnRandomFloorType();
 			SurfaceLevel.FloorType destination = cleanSweep.downSensor.returnRandomFloorType();

@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class FloorPlan {
-	private HashMap<String, String> floorPlan;
+	private HashMap<String, String> floorPlan; # Coordinate, Objects at location
 	private Robot robot;
 	public FloorPlan(Robot robot) {
 		this.floorPlan = new HashMap<String, String>();

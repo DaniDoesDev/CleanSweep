@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SensorSimulator {
-	private HashMap<String, String> simulatedFloorPlan; # not the same as Robot's FloorPlan class
+	private HashMap<String, String> simulatedFloorPlan; // not the same as Robot's FloorPlan class
 	private ArrayList<String> obstacles = new ArrayList<String>();
 	private Robot robot;
 	

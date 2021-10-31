@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SensorSimulator {
-	private HashMap<String, String> floorPlan;
+	private HashMap<String, String> simulatedFloorPlan; # not the same as Robot's FloorPlan class
 	private ArrayList<String> obstacles = new ArrayList<String>();
 	private Robot robot;
 	
@@ -11,7 +11,7 @@ public class SensorSimulator {
 		// down-stair/decline, charging-base
 		// ex: k = "4,5" v = "wall"
 		this.robot = robot;
-		this.floorPlan = new HashMap<String, String>();
+		this.simulatedFloorPlan = new HashMap<String, String>();
 		//this.obstacles.add("clear");
 		this.obstacles.add("obstacle");
 		this.obstacles.add("wall");
@@ -24,30 +24,30 @@ public class SensorSimulator {
 		for (int i = 0; i<10; i++) {
 			for (int j = 0; j<10; j++) {
 				if (i == 0 || i == 9) { // Puts wall on outside
-					this.floorPlan.put(i + "," + j, "wall");
+					this.simulatedFloorPlan.put(i + "," + j, "wall");
 				} else if (j == 0 || j == 9) { // Puts wall on outside
-					this.floorPlan.put(i + "," + j, "wall");
+					this.simulatedFloorPlan.put(i + "," + j, "wall");
 				} else {
 					if (Math.random() > 0.2) { // =0-1
-						this.floorPlan.put(i + "," + j, "clear");
+						this.simulatedFloorPlan.put(i + "," + j, "clear");
 					} else {
 						int index = (int)(Math.random() * this.obstacles.size());  
-			            this.floorPlan.put(i + "," + j, obstacles.get(index));
+			            this.simulatedFloorPlan.put(i + "," + j, obstacles.get(index));
 					}
 				}
 			}
 		}
 		
 		// The robot's starting location is always clear.
-		this.floorPlan.put(this.robot.coordinates, "clear");
+		this.simulatedFloorPlan.put(this.robot.coordinates, "clear");
 
 		// Add the initial charging base at Robot's starting coordinates of 1,1
-		this.floorPlan.put("1,1", "charging-base");
+		this.simulatedFloorPlan.put("1,1", "charging-base");
 		
 		// Add a randomly placed charging base (this will be a second charging base)
 		int x = (int)(Math.random() * 7) + 1;
 		int y = (int)(Math.random() * 7) + 1;
-		this.floorPlan.put(x + "," + y, "charging-base");
+		this.simulatedFloorPlan.put(x + "," + y, "charging-base");
 	}
 	
 	public ArrayList<Boolean> readDownSensor() {
@@ -59,13 +59,13 @@ public class SensorSimulator {
 		int x = Integer.parseInt(c[0]);
 		int y = Integer.parseInt(c[1]);
 		// Straight
-		d.add(this.floorPlan.get(x + "," + (y + 1)) == "down-stair/decline");
+		d.add(this.simulatedFloorPlan.get(x + "," + (y + 1)) == "down-stair/decline");
 		// Right
-		d.add(this.floorPlan.get((x + 1) + "," + y) == "down-stair/decline");
+		d.add(this.simulatedFloorPlan.get((x + 1) + "," + y) == "down-stair/decline");
 		// Back
-		d.add(this.floorPlan.get(x + "," + (y - 1)) == "down-stair/decline");
+		d.add(this.simulatedFloorPlan.get(x + "," + (y - 1)) == "down-stair/decline");
 		// Left
-		d.add(this.floorPlan.get((x - 1) + "," + y) == "down-stair/decline");
+		d.add(this.simulatedFloorPlan.get((x - 1) + "," + y) == "down-stair/decline");
 		
 		return d;
 	}
@@ -94,11 +94,10 @@ public class SensorSimulator {
 		
 		// Special case: A down-stair/decline for a
 		// regular sensor is seen as "clear"
-		if (this.floorPlan.get(coord) == "down-stair/decline") {
+		if (this.simulatedFloorPlan.get(coord) == "down-stair/decline") {
 			return "clear";
 		}
 		
-		return this.floorPlan.get(coord);
-		//return this.floorPlan.get(x + "," + y);
+		return this.simulatedFloorPlan.get(coord);
 	}
 }

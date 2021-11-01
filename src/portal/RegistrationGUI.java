@@ -55,7 +55,7 @@ public class RegistrationGUI {
         c.gridwidth = 3;
         pane.add(label, c);
 
-        text2 = new JTextField();
+        text2 = new JPasswordField();
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.5;
         c.gridx = 3;

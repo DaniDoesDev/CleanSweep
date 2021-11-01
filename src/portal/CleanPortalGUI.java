@@ -56,8 +56,8 @@ public class CleanPortalGUI {
 	    c.gridy = 0;
 	    c.gridwidth = 2;
 	    pane.add(label, c);
-	    
-	    // add repeat schedule
+
+		// add repeat schedule
 	    button = new JButton("Add new repeating schedule");
 	    c.fill = GridBagConstraints.HORIZONTAL;
 	    c.weightx = 1;
@@ -96,7 +96,28 @@ public class CleanPortalGUI {
 	        	});
 	        }
 	    });
-	    
+
+		// add registration
+		button = new JButton("Register");
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 1;
+		c.gridx = 0;
+		c.gridy = 3;
+		c.gridwidth = 2;
+		pane.add(button, c);
+		button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				javax.swing.SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+						jf.setVisible(false);
+						// CHANGE THIS TO REGISTRATIONGUI
+						new RegistrationGUI().createAndShowGUI(jf, CP);
+					}
+				});
+			}
+		});
+
     }
  
     /**

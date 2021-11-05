@@ -1,4 +1,5 @@
-import portal.*; // Portal can run from the Robot if required
+package main;
+// import portal.*; // Portal can run from the Robot if required
 
 public class Main {
 

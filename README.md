@@ -5,6 +5,10 @@ Agile Group Project - Team Dirt Destroyers!
 
 # Sprint 3
 
+For Sprint 3 we wanted to add extra functionality to our portal and ensure proper testing and automated building and running of these tests is employed with each build, as well as wrap up previously in progress stories such as complete dirt detection and cleaning capabilities.
+
+* Note - The cleaning portal has been moved to its own repository for separate building and running with a separate pom file. The files can still be found here, but the complete build can now be found at https://github.com/DaniDoesDev/Clean-Sweep-Portal
+
 # Sprint 2
 
 For Sprint 2 we wanted to start adding onto the base functionality completed in Sprint 1. Our priorities included power management, and the user portal component. Our stories include:

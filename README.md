@@ -3,6 +3,8 @@
 # CleanSweep
 Agile Group Project - Team Dirt Destroyers!
 
+# Sprint 3
+
 # Sprint 2
 
 For Sprint 2 we wanted to start adding onto the base functionality completed in Sprint 1. Our priorities included power management, and the user portal component. Our stories include:

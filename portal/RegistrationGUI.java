@@ -1,6 +1,6 @@
 package portal;
-
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -63,11 +63,29 @@ public class RegistrationGUI {
         c.gridwidth = 3;
         pane.add(text2, c);
 
+        label = new JLabel("Clean Sweep Serial #");
+        c.weightx = 0.5;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 2;
+        //c.gridwidth = 3;
+        pane.add(label, c);
+
+        //Calendar date = Calendar.getInstance();
+        //date.add(Calendar.HOUR_OF_DAY, 1);
+        text1 = new JTextField();
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0.5;
+        c.gridx = 3;
+        c.gridy = 2;
+        c.gridwidth = 3;
+        pane.add(text1, c);
+
         button = new JButton("Complete registration");
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 1;
         c.gridx = 0;
-        c.gridy = 2;
+        c.gridy = 3;
         c.gridwidth = 6;
         pane.add(button, c);
 

@@ -57,12 +57,32 @@ public class CleanPortalGUI {
 	    c.gridwidth = 2;
 	    pane.add(label, c);
 
+		// add one time scheduling
+		button = new JButton("Add new one time schedule");
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 1;
+		c.gridx = 0;
+		c.gridy = 2;
+		c.gridwidth = 2;
+		pane.add(button, c);
+		button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				javax.swing.SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+						jf.setVisible(false);
+						new OneTimeCleaningGUI().createAndShowGUI(jf, CP);
+					}
+				});
+			}
+		});
+
 		// add repeat schedule
 	    button = new JButton("Add new repeating schedule");
 	    c.fill = GridBagConstraints.HORIZONTAL;
 	    c.weightx = 1;
 	    c.gridx = 0;
-	    c.gridy = 1;
+	    c.gridy = 3;
 	    c.gridwidth = 2;
 	    pane.add(button, c);
 	    button.addActionListener(new ActionListener() {
@@ -82,7 +102,7 @@ public class CleanPortalGUI {
 	    c.fill = GridBagConstraints.HORIZONTAL;
 	    c.weightx = 1;
 	    c.gridx = 0;
-	    c.gridy = 2;
+	    c.gridy = 4;
 	    c.gridwidth = 2;
 	    pane.add(button, c);
 	    button.addActionListener(new ActionListener() {
@@ -102,7 +122,7 @@ public class CleanPortalGUI {
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 1;
 		c.gridx = 0;
-		c.gridy = 3;
+		c.gridy = 1;
 		c.gridwidth = 2;
 		pane.add(button, c);
 		button.addActionListener(new ActionListener() {

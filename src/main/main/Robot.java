@@ -11,13 +11,15 @@ public class Robot {
 	public SensorSimulator sensorSimulatorSystem;
 	public Cleaner cleaner;
 	public String coordinates;
-	public Stack<String> pathToInitialCharger; 
+	public Stack<String> pathToInitialCharger;
+	public CSLogger CSLogger;
 	
 	public Robot() {
 		start();
 	}
 	
 	public void start() {
+		this.CSLogger = new CSLogger();
 		this.objectDetectionSystem = new ObjectDetection(this);
 		this.floorPlanSystem = new FloorPlan(this);
 		this.flatSensors = new ArrayList<>();
@@ -31,10 +33,6 @@ public class Robot {
 		this.coordinates = "1,1"; // Machine start position
 		this.pathToInitialCharger = new Stack<>();
 		
-		// check for obstacles 
-		//this.objectDetectionSystem.read();
-		//this.floorPlanSystem.print();
-		
 	}
 
 	public Integer convertToInteger(char coord) {
@@ -42,7 +40,13 @@ public class Robot {
 		Integer coordInt = Integer.parseInt(coordString);
 		return coordInt;
 	}
-
+	
+	public void moveRobot(String coord, String direction) {
+		this.coordinates = coord;
+		CSLogger.log("position", this.coordinates);
+		CSLogger.log("direction", direction);
+	}
+	
 //	public ArrayList<Integer> parseCoordinates() {
 //		String[] c = coordinates.split(",");
 //		// 1=straight, 2=right, 3=back, 4=left
@@ -67,7 +71,8 @@ public class Robot {
 
 			// Convert back to string and update robot coordinates
 			String coords = xCoord + "," + yCoordInt.toString();
-			this.coordinates = coords;
+			//this.coordinates = coords;
+			moveRobot(coords, "straight");
 			System.out.println("I moved to coordinates " + coords);
 
 			// Push the opposite of this successful movement to path history so we can retrace steps, but only if this moves us further in a direction
@@ -87,7 +92,7 @@ public class Robot {
 			System.out.println("I can't move up a space, I'm blocked!");
 			// Return false to indicate that this way is currently blocked
 			return false;
-		}
+		} 
 	}
 
 	public boolean moveBack(boolean returningToCharger) {
@@ -103,7 +108,8 @@ public class Robot {
 
 			// Convert back to string and update robot coordinates
 			String coords = xCoord + "," + yCoordInt.toString();
-			this.coordinates = coords;
+			//this.coordinates = coords;
+			moveRobot(coords, "back");
 			System.out.println("I moved to coordinates " + coords);
 
 			// Push the opposite of this successful movement to path history so we can retrace steps
@@ -138,7 +144,8 @@ public class Robot {
 
 			// Convert back to string and update robot coordinates
 			String coords = xCoordInt.toString() + "," + yCoord;
-			this.coordinates = coords;
+			//this.coordinates = coords;
+			moveRobot(coords, "left");
 			System.out.println("I moved to coordinates " + coords);
 
 			// Push the opposite of this successful movement to path history so we can retrace steps
@@ -172,7 +179,8 @@ public class Robot {
 
 			// Convert back to string and update robot coordinates
 			String coords = xCoordInt.toString() + "," + yCoord;
-			this.coordinates = coords;
+			//this.coordinates = coords;
+			moveRobot(coords, "right");
 			System.out.println("I moved to coordinates " + coords);
 
 			// Push the opposite of this successful movement to path history so we can retrace steps
@@ -239,8 +247,10 @@ public class Robot {
 	}
 
 	public void charge() {
+		CSLogger.log("charging", "charging"); // charging
 		this.cleaner.setCurrBattery(250);
 		System.out.println("I'm all charged up and ready to go!");
+		CSLogger.log("charging", "charging complete"); // done charging
 	}
 
 	public void empty() {

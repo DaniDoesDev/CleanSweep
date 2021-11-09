@@ -8,6 +8,8 @@ public class ObjectDetection {
 		this.robot=robot;
 	}
 	private void read() {
+		
+		//read the direction sensors
 		for (Sensor i : this.robot.flatSensors) { 
 			String thing = i.readFlatSensor();
 			// Always write to floor plan
@@ -16,8 +18,7 @@ public class ObjectDetection {
 			);
 		}
 		
-		// ArrayList<Boolean> x = this.robot.downSensor.readDownSensor();
-		
+		//read down sensor
 		int c=1;
 		for (Boolean i :this.robot.downSensor.readDownSensor()) {
 			if (i == true) {
@@ -58,13 +59,16 @@ public class ObjectDetection {
 
 	public Boolean blocked(String direction) {
 		this.read(); // update sensor readings
-		// Read floorplan for straight coordinate
+		// Read FloorPlan for direction
 		String object = robot.floorPlanSystem.readFloorPlan().get(direction);
 		if (object == "clear" || object == "charging-base" ||
 			object == "door-open" 
 		) {
+			//robot.CSLogger.log("obstacle",object);
+			robot.CSLogger.log("obstacle","obstacle found");
 			return false;
 		}
+		robot.CSLogger.log("obstacle","none");
 		return true;
 	}
 	

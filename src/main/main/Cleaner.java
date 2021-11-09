@@ -8,13 +8,13 @@ public class Cleaner {
     private double currBattery;
     private double currDirt;
     // private HashMap<String, String> DirtMap;
-    // private Robot robot;
+    private Robot robot;// reference to robot
     private double currBatteryToCharger = 0;
 
     public Cleaner(Robot robot) {
         currBattery = MAX_BATTERY_CAPACITY;
         currDirt = MAX_DIRT_CAPACITY;
-        // this.robot = robot;
+        this.robot = robot;
     }
 
     public double getCurrBattery() {
@@ -38,8 +38,10 @@ public class Cleaner {
     }
 
     public void cleanSpot() {
-        // This method currently cleans a spot regardless of whether it's dirty or not (no dirt detection present). This needs to be added for cleaning - future state
-        // If we have capacity to clean more dirt
+    	// This method currently cleans a spot regardless of whether it's dirty or not (no dirt detection present). This needs to be added for cleaning - future state
+        robot.CSLogger.log("cleaning", "cleaning a spot");
+        
+    	// If we have capacity to clean more dirt
         if (currDirt > 0) {
             currDirt--;
             // Here we will also decrement the amount of dirt present at this particular spot for cleaning - future state once dirt detection is complete
@@ -92,6 +94,7 @@ public class Cleaner {
         if (getCurrBattery() == 0) {
             System.out.println("I have run out of power, not good!");
         }
+        robot.CSLogger.log("power", String.valueOf(currBattery));
     }
 
     public void drainBatteryCleaning(SurfaceLevel.FloorType curr) {
@@ -106,6 +109,7 @@ public class Cleaner {
         if (getCurrBattery() == 0) {
             System.out.println("I have run out of power, not good!");
         }
+        robot.CSLogger.log("power", String.valueOf(currBattery));
     }
 
 }

@@ -43,6 +43,7 @@ public class Sensor {
 	public SurfaceLevel.FloorType returnRandomFloorType() {
 		Random rn = new Random();
 		int randNum = rn.nextInt(3) + 1;
+		robot.CSLogger.log("surface", SurfaceLevel.getSurfaceLevel(randNum).toString());
 		return SurfaceLevel.getSurfaceLevel(randNum);
 	}
 

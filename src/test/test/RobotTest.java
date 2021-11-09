@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.junit.jupiter.api.Test;
-import org.junit.runners.Parameterized.Parameters;
+//import org.junit.runners.Parameterized.Parameters;
 
 class RobotTest {
 	
@@ -111,10 +111,10 @@ class RobotTest {
 		}
 	}
 	
-	@Parameters
-	public static Iterable<? extends Object> testLoggingSurfaceParam() {
-	    return Arrays.asList("BARE", "LOW", "HIGH", "BLOCKED");
-	}
+//	@Parameters
+//	public static Iterable<? extends Object> testLoggingSurfaceParam() {
+//	    return Arrays.asList("BARE", "LOW", "HIGH", "BLOCKED");
+//	}
 	@Test
 	void testLoggingSurface() {
 		Robot cleanSweep = new Robot();
@@ -122,7 +122,7 @@ class RobotTest {
 		// check log for "surface:<BARE,LOW,HIGH,BLOCKED>"	
 		assertEquals(cleanSweep.CSLogger.getLogType(2), "surface");
 		assertEquals(cleanSweep.CSLogger.getLogValue(2),
-			testLoggingSurfaceParam());
+			false);
 	}
 	
 	@Test

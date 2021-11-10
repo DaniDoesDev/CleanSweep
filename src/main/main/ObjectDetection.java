@@ -64,11 +64,11 @@ public class ObjectDetection {
 		if (object == "clear" || object == "charging-base" ||
 			object == "door-open" 
 		) {
-			//robot.CSLogger.log("obstacle",object);
-			robot.CSLogger.log("obstacle","obstacle found");
+			robot.CSLogger.log("obstacle","none");
 			return false;
 		}
-		robot.CSLogger.log("obstacle","none");
+		//robot.CSLogger.log("obstacle",object);
+		robot.CSLogger.log("obstacle","obstacle found");
 		return true;
 	}
 	

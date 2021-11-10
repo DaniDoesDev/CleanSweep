@@ -39,11 +39,11 @@ public class Cleaner {
 
     public void cleanSpot() {
     	// This method currently cleans a spot regardless of whether it's dirty or not (no dirt detection present). This needs to be added for cleaning - future state
-        robot.CSLogger.log("cleaning", "cleaning a spot");
         
     	// If we have capacity to clean more dirt
         if (currDirt > 0) {
             currDirt--;
+            robot.CSLogger.log("cleaning", "cleaning spot");
             // Here we will also decrement the amount of dirt present at this particular spot for cleaning - future state once dirt detection is complete
             // We only decrement once per cleaning cycle because the sensor cannot tell how much dirt is present (according to PDF) just if an area is clean, so we may need to call this method multiple times elsewhere
             System.out.println("I cleaned one unit of dirt, my current capacity is now " + currDirt + " units");

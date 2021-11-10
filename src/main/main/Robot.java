@@ -32,7 +32,7 @@ public class Robot {
 		this.cleaner = new Cleaner(this);
 		this.coordinates = "1,1"; // Machine start position
 		this.pathToInitialCharger = new Stack<>();
-		
+		CSLogger.log("position", "1,1");
 	}
 
 	public Integer convertToInteger(char coord) {

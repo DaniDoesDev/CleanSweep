@@ -3,6 +3,8 @@
 # CleanSweep
 Agile Group Project - Team Dirt Destroyers!
 
+* Note - Test Driven Development is currently being employed so the build may show up as failing when tests have been implemented before code (Red State). This is expected.
+
 # Sprint 3
 
 For Sprint 3 we wanted to add extra functionality to our portal and ensure proper testing and automated building and running of these tests is employed with each build, as well as wrap up previously in progress stories such as complete dirt detection and cleaning capabilities.

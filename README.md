@@ -1,15 +1,25 @@
 [![DaniDoesDev](https://circleci.com/gh/DaniDoesDev/CleanSweep.svg?style=shield)](https://app.circleci.com/pipelines/github/DaniDoesDev/CleanSweep)
 
 # CleanSweep
-Agile Group Project - Team Dirt Destroyers!
+Agile Group Project - Team Dirt Destroyers! 
+<br /><br />
+First, navigate to the "CleanSweep" folder where the pom.xml file is located and run the following command:
+```
+mvn clean install
+```
 
-* Note - Test Driven Development is currently being employed so the build may show up as failing when tests have been implemented before code (Red State). This is expected.
+Once the tests are run and the build is succesful, cd into the "target" folder (folder with CleanSweep-1.0-SNAPSHOT.jar) and execute the following command on the terminal for the Clean Sweep simulation to run (this is an executable jar file):
+```
+java -jar CleanSweep-1.0-SNAPSHOT.jar
+```
 
 # Sprint 3
 
 For Sprint 3 we wanted to add extra functionality to our portal and ensure proper testing and automated building and running of these tests is employed with each build, as well as wrap up previously in progress stories such as complete dirt detection and cleaning capabilities.
 
 * Note - The cleaning portal has been moved to its own repository for separate building and running with a separate pom file. The files can still be found here, but the complete build can now be found at https://github.com/DaniDoesDev/Clean-Sweep-Portal
+
+* Note - Test Driven Development is currently being employed so the build may show up as failing when tests have been implemented before code (Red State). This is expected.
 
 # Sprint 2
 

@@ -52,7 +52,7 @@ public class Sensor {
 		Random rn = new Random();
 		int randNum = rn.nextInt(2) + 1;
 		if (randNum == 1) {
-			System.out.println("This spot needs cleaning");
+			System.out.println("Dirt detected at this spot! It needs cleaning!");
 			return true;
 		}
 		System.out.println("This spot is clean");

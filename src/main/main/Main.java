@@ -34,6 +34,7 @@ public class Main {
 
 			if (cleanSweep.downSensor.isDirty()) {
 				cleanSweep.cleaner.cleanSpot();
+				System.out.println("This area has been cleaned! Continuing...");
 				cleanSweep.cleaner.drainBatteryCleaning(destination);
 			}
 

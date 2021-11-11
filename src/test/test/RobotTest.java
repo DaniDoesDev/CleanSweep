@@ -1,18 +1,12 @@
 package test;
 
-import main.CSLogger;
 import main.Robot;
 import main.SurfaceLevel;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.junit.jupiter.api.Test;
-//import org.junit.runners.Parameterized.Parameters;
 
 class RobotTest {
 	

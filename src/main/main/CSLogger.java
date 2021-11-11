@@ -1,20 +1,15 @@
 package main;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Random;
 import java.util.UUID;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
@@ -26,7 +21,6 @@ public class CSLogger {
 	private Logger logger;
 	private String logFolder = "logs";
 	private String logName;
-	private ArrayList<String> logs;
 	
 	public CSLogger() {
 		// make new log file

@@ -9,10 +9,9 @@ public class Main {
 		//       ScheduledExecutorService to add tell the robot
 		//       to start running on these dates
 		System.out.println("Clean Sweep initialized - commence one-time cleaning cycle");
-		// Just try moving to any available space, pivoting as obstacles are detected
-		// Currently this is representative of one "cleaning cycle"
+		// Try moving to an available space, pivoting as obstacles are detected
+		// This is representative of one "cleaning cycle"
 		// When you move to a spot, clean it if it's dirty!
-
 
 		while (!cleanSweep.isInNeedOfCharge() && !cleanSweep.needsEmptying()) {
 			SurfaceLevel.FloorType curr = cleanSweep.downSensor.returnRandomFloorType();

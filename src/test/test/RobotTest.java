@@ -228,4 +228,70 @@ class RobotTest {
 		assertEquals(n.get(1), "charging");
 		assertEquals(n.get(2), "charging complete");
 	}
+
+	@Test
+	void testMoveToCharger() {
+		Robot cleanSweep = new Robot();
+		cleanSweep.moveStraight(false);
+		cleanSweep.moveLeft(false);
+		cleanSweep.moveStraight(false);
+		cleanSweep.moveBack(false);
+		cleanSweep.moveRight(false);
+		cleanSweep.moveToCharger();
+		assertEquals(cleanSweep.coordinates, "1,1");
+	}
+
+	@Test
+	void testIsInNeedOfChargeFalse() {
+		Robot cleanSweep = new Robot();
+		cleanSweep.cleaner.setCurrBattery(60);
+		cleanSweep.cleaner.setCurrBatteryToCharger(50);
+		assertEquals(false, cleanSweep.isInNeedOfCharge());
+	}
+
+	@Test
+	void testIsInNeedOfChargeBorder() {
+		Robot cleanSweep = new Robot();
+		cleanSweep.cleaner.setCurrBattery(59);
+		cleanSweep.cleaner.setCurrBatteryToCharger(50);
+		assertEquals(false, cleanSweep.isInNeedOfCharge());
+	}
+
+	@Test
+	void testIsInNeedOfChargeTrue() {
+		Robot cleanSweep = new Robot();
+		cleanSweep.cleaner.setCurrBattery(58);
+		cleanSweep.cleaner.setCurrBatteryToCharger(50);
+		assertEquals(true, cleanSweep.isInNeedOfCharge());
+	}
+
+	@Test
+	void testNeedsEmptyingFalse() {
+		Robot cleanSweep = new Robot();
+		cleanSweep.cleaner.setCurrDirt(1);
+		assertEquals(false, cleanSweep.needsEmptying());
+	}
+
+	@Test
+	void testNeedsEmptyingTrue() {
+		Robot cleanSweep = new Robot();
+		cleanSweep.cleaner.setCurrDirt(0);
+		assertEquals(true, cleanSweep.needsEmptying());
+	}
+
+	@Test
+	void testCharge() {
+		Robot cleanSweep = new Robot();
+		cleanSweep.cleaner.setCurrBattery(0);
+		cleanSweep.charge();
+		assertEquals(250, cleanSweep.cleaner.getCurrBattery());
+	}
+
+	@Test
+	void testEmpty() {
+		Robot cleanSweep = new Robot();
+		cleanSweep.cleaner.setCurrDirt(0);
+		cleanSweep.empty();
+		assertEquals(50, cleanSweep.cleaner.getCurrDirt());
+	}
 }

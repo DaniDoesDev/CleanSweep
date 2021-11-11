@@ -37,6 +37,10 @@ public class Cleaner {
         this.currDirt = currDirt;
     }
 
+    public void setCurrBatteryToCharger(double battery) {
+        this.currBatteryToCharger = battery;
+    }
+
     public void cleanSpot() {
     	// This method currently cleans a spot regardless of whether it's dirty or not (no dirt detection present). This needs to be added for cleaning - future state
         

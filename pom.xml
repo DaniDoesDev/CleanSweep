@@ -17,12 +17,9 @@
     <sourceDirectory>src/main/</sourceDirectory>
     <testSourceDirectory>src/test/</testSourceDirectory>
     <pluginManagement>
-        <plugins>
+      <plugins>
         <plugin>
-      <!-- Build an executable JAR -->
-          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
-          <version>3.1.0</version>
           <configuration>
             <archive>
               <manifest>
@@ -32,30 +29,68 @@
               </manifest>
             </archive>
           </configuration>
+          <executions>
+            <execution>
+              <id>only-library</id>
+              <goals><goal>jar</goal></goals>
+              <phase>package</phase>
+              <configuration>
+                <classifier>Sensor-Simulator</classifier>
+                <includes>
+                  <include>main.FloorPlan</include>
+                  <include>main.Sensor</include>
+                  <include>main.SensorSimulator</include>
+                </includes>
+              </configuration>
+            </execution>
+            <execution>
+              <id>everything</id>
+              <goals><goal>jar</goal></goals>
+              <phase>package</phase>
+              <configuration>
+                <archive>
+                  <manifest>
+                    <addClasspath>true</addClasspath>
+                    <classpathPrefix>lib/</classpathPrefix>
+                    <mainClass>main.Main</mainClass>
+                  </manifest>
+                </archive>
+                <classifier>Control-System</classifier>
+                <includes>
+                  <include>main.Cleaner</include>
+                  <include>main.CSLogger</include>
+                  <include>main.Main</include>
+                  <include>main.ObjectDetection</include>
+                  <include>main.Robot</include>
+                  <include>main.SurfaceLevel</include>
+                </includes>
+              </configuration>
+            </execution>
+          </executions>
         </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.21.0</version>
-                <dependencies>
-                  <dependency>
-                    <groupId>org.junit.platform</groupId>
-                    <artifactId>junit-platform-surefire-provider</artifactId>
-                    <version>1.2.0-M1</version>
-                  </dependency>
-                <dependency>
-                  <groupId>org.junit.jupiter</groupId>
-                  <artifactId>junit-jupiter-engine</artifactId>
-                  <version>5.2.0-M1</version>
-                </dependency>
-              </dependencies>
-            </plugin>
-        </plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.21.0</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.junit.platform</groupId>
+              <artifactId>junit-platform-surefire-provider</artifactId>
+              <version>1.2.0-M1</version>
+            </dependency>
+            <dependency>
+              <groupId>org.junit.jupiter</groupId>
+              <artifactId>junit-jupiter-engine</artifactId>
+              <version>5.2.0-M1</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+      </plugins>
     </pluginManagement>
 </build>
 
@@ -66,7 +101,6 @@
       <version>5.7.0</version>
       <scope>test</scope>
     </dependency>
-
   </dependencies>
 
 </project>

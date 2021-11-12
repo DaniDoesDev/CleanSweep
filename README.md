@@ -8,10 +8,18 @@ First, navigate to the "CleanSweep" folder where the pom.xml file is located and
 mvn clean install
 ```
 
-Once the tests are run and the build is succesful, cd into the "target" folder (folder with CleanSweep-1.0-SNAPSHOT.jar) and execute the following command on the terminal for the Clean Sweep simulation to run (this is an executable jar file):
+Once the tests are run and the build is successful, cd into the "target" folder (folder with CleanSweep-1.0-SNAPSHOT.jar) and execute the following command on the terminal for the Clean Sweep simulation to run (this is an executable jar file):
 ```
 java -jar CleanSweep-1.0-SNAPSHOT.jar
 ```
+
+Note, there are two additional jar files in the target folder:
+CleanSweep-1.0-SNAPSHOT-Control-System.jar
+CleanSweep-1.0-SNAPSHOT-Sensor-Simulator.jar
+
+These jars include the files for their respective individual project pieces in order to separate individual deliverables as required.
+These jars are not executable, please use the combined executable jar above (CleanSweep-1.0-SNAPSHOT.jar) to run the program and see the terminal simulation.
+NOTE: The last project piece (the portal) is located in a separate repository https://github.com/DaniDoesDev/Clean-Sweep-Portal
 
 # Sprint 3
 
